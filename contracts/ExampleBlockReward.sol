@@ -16,14 +16,15 @@
 
 pragma solidity ^0.4.21;
 
-import './BlockReward.sol';
+import "./BlockReward.sol";
+
 
 contract ExampleBlockReward is BlockReward {
 	address constant SYSTEM_ADDRESS = 0xffffFFFfFFffffffffffffffFfFFFfffFFFfFFfE;
 
-    // produce rewards for the given benefactors, with corresponding reward codes.
-    // only callable by `SYSTEM_ADDRESS`
-    function reward(address[] benefactors, uint16[] kind)
+	// produce rewards for the given benefactors, with corresponding reward codes.
+	// only callable by `SYSTEM_ADDRESS`
+	function reward(address[] benefactors, uint16[] kind)
 		external
 		onlySystem
 		returns (address[], uint256[])
