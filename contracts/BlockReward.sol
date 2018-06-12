@@ -1,5 +1,3 @@
-// The block reward contract interface.
-//
 // Copyright 2018 Parity Technologies (UK) Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-pragma solidity ^0.4.21;
+// The block reward contract interface.
+
+pragma solidity ^0.4.22;
 
 
 interface BlockReward {

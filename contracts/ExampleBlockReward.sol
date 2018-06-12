@@ -1,5 +1,3 @@
-// Example block reward contract.
-//
 // Copyright 2018 Parity Technologies (UK) Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,13 +12,27 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-pragma solidity ^0.4.21;
+// Example block reward contract.
+
+pragma solidity ^0.4.22;
 
 import "./BlockReward.sol";
 
 
 contract ExampleBlockReward is BlockReward {
-	address constant SYSTEM_ADDRESS = 0xffffFFFfFFffffffffffffffFfFFFfffFFFfFFfE;
+	address systemAddress;
+
+	modifier onlySystem {
+		require(msg.sender == systemAddress);
+		_;
+	}
+
+	constructor(address _systemAddress)
+		public
+	{
+		/* systemAddress = 0xffffFFFfFFffffffffffffffFfFFFfffFFFfFFfE; */
+		systemAddress = _systemAddress;
+	}
 
 	// produce rewards for the given benefactors, with corresponding reward codes.
 	// only callable by `SYSTEM_ADDRESS`
@@ -37,10 +49,5 @@ contract ExampleBlockReward is BlockReward {
 		}
 
 		return (benefactors, rewards);
-	}
-
-	modifier onlySystem {
-		require(msg.sender == SYSTEM_ADDRESS);
-		_;
 	}
 }
